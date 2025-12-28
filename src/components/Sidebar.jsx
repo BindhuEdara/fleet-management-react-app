@@ -4,20 +4,28 @@ import MainContent from "./MainContent";
 function Sidebar() {
 
   const [fleetData, setFleetData] = useState({
-    vehicleRegistrationNumber: "",
+    number: "",
     category: "",
     DriverName: "",
     AvailabilityStatus: "",
   })
+  const [submittedData, setSubmittedData] = useState(null);
 
-  const handleClick = () => {
-    setFleetData(fleetData);
+  const handleSubmit = () => {
+    setSubmittedData(fleetData);
   }
+  const handleChange = () => {
+    const { name, value } = e.target;
+    setFleetData({...fleetData, [name]: value})
+  }
+
   return (
     <>
       <h2>This is Sidebar</h2>
       <form action="">
-        <input type="text" placeholder="Enter vehicle registarion number" onChange={(e) => e.target.value}  required/>
+        <input type="text" name="name" placeholder="Enter vehicle registarion number"
+          onChange={handleChange}
+          required />
         <br />
         <select value="category">
           <option value="">Auto</option>
@@ -26,18 +34,25 @@ function Sidebar() {
           <option value="">Bus</option>
         </select>
         <br />
-        <input type="text" placeholder="Driver Name" required />
+        <input type="text" name="name" placeholder="Driver Name"
+          onChange={handleChange}
+          required />
         <br />
         <select value="Availability Status">
           <option value="Available">Available</option>
           <option value="">Not Available</option>
         </select>
         <br />
-        <button onClick={handleClick}>Add Fleet</button>
-        {fleetData.map((item) => (
-          <MainContent item={item} />
-        ))}
+        <button onClick={handleSubmit}>Add Fleet</button>
       </form>
+
+      {submittedData && (
+        <>
+        <h3>Submitted Data</h3>
+          <p>Number :{submittedData.name} </p>
+          <p>Name: {submittedData.name}</p>
+          </>
+      )}
     </>
     )
 }

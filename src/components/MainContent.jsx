@@ -1,4 +1,4 @@
-function MainContent({item}) {
+function MainContent() {
   return (
     <>
     </>
