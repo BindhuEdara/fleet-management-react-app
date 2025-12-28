@@ -11,10 +11,10 @@ function App() {
 
   return (
     <>
-      <LoginPage />
       <BrowserRouter>
         <Routes>
-          <Route path='/admin' element={<AdminPage />} />
+          <Route path='/' element={<LoginPage />} />
+          <Route path='/Admin' element={<AdminPage />} />
         </Routes>
       </BrowserRouter>
     </>

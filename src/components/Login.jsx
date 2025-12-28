@@ -5,15 +5,15 @@ function LoginPage() {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("")
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    if (email || password) {
+    if (email === "admin@gmail.com"|| password === "admin1234") {
       alert("Login Success");
-      navigate('/AdminPage');
-    }
-    if (!email || !password) {
-      prompt("wrong email or password")
+      navigate('/admin')
+    } else {
+      alert("Invalid email or password")
     }
   }
 
@@ -36,6 +36,7 @@ function LoginPage() {
       />
       <br />
       <button onClick={handleLogin}>Login</button>
+      {/* {error  && <p style={{color: "red"}}> wrong email and password</p>} */}
     </>
     )
 }
